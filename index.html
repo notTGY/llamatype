@@ -28,8 +28,9 @@
     }
     .container {
       position: relative;
-      width: 400px;
-      height: 36px;
+      width: 100%;
+      max-width: 800px;
+      height: 44px;
       margin: 20px auto;
       margin-bottom: 100px;
     }
@@ -39,7 +40,7 @@
       height: 100%;
       resize: none;
       font-family: monospace;
-      font-size: 16px;
+      font-size: 20px;
       padding: 10px;
       position: absolute;
       top: 0;
@@ -57,7 +58,7 @@
       background: transparent;
       pointer-events: none;
       z-index: 1;
-      height: 54px;
+      height: 66px;
     }
 
     #input-text {
@@ -115,7 +116,7 @@
         if (startTime && input.length === targetText.length) {
           const elapsed = (Date.now() - startTime) / 1000;
           const cps = input.length / elapsed;
-          setSpeed(isNaN(cps) ? 0 : cps.toFixed(2) + '!');
+          setSpeed(isNaN(cps) ? 0 : (cps*12).toFixed(0) + '!');
           return;
         }
 
@@ -123,7 +124,7 @@
           if (startTime) {
             const elapsed = (Date.now() - startTime) / 1000;
             const cps = input.length / elapsed;
-            setSpeed(isNaN(cps) ? 0 : cps.toFixed(2));
+            setSpeed(isNaN(cps) ? 0 : (cps*12).toFixed(0));
           }
         }, 300);
 
@@ -157,10 +158,10 @@
               />
             </div>
           <div className="speedometer">
-            Speed: {speed} characters per second
+            Speed: {speed} wpm
           </div>
           <div className="speedometer">
-            GPT Speed: {gptSpeed} characters per second
+            GPT Speed: {gptSpeed} wpm
           </div>
         </main>
 <footer/>

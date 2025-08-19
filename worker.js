@@ -14,7 +14,7 @@ const gen = async () => {
   const r = await gpt('<s>', { streamer, do_sample: true, max_new_tokens: 100 })
   const elapsed = (Date.now() - gptStart) / 1000;
   const cps = t.length / elapsed;
-  const speed = isNaN(cps) ? 0 : cps.toFixed(2)
+  const speed = isNaN(cps) ? 0 : (cps*12).toFixed(0)
   self.postMessage({status: 'speed', speed})
 }
 gen()
